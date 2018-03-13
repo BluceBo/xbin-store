@@ -51,7 +51,7 @@
     </parent>
 
     <!-- 配置maven地址 -->
-    <distributionManagement>
+    <!--distributionManagement>
         <repository>
             <id>releases</id>
             <name>Nexus Release Repository</name>
@@ -87,7 +87,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
-    </pluginRepositories>
+    </pluginRepositories>-->
 
     <properties>
         <!-- 私有 Docker Registry -->
@@ -114,7 +114,7 @@
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <jedis.version>2.7.2</jedis.version>
         <solrj.version>5.4.0</solrj.version>
-        <dubbo.version>2.8.4</dubbo.version>
+        <dubbo.version>2.5.3</dubbo.version>
         <zookeeper.version>3.4.7</zookeeper.version>
         <zkclient.version>0.7</zkclient.version>
         <activemq.version>5.11.2</activemq.version>
@@ -231,11 +231,11 @@
                 <version>${mysql.version}</version>
             </dependency>
             <!-- 连接池 -->
-            <dependency>
+            <!--<dependency>
                 <groupId>cn.binux</groupId>
                 <artifactId>spring-boot-starter-druid</artifactId>
                 <version>${springboot.druid.version}</version>
-            </dependency>
+            </dependency>-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
@@ -296,7 +296,7 @@
                 <version>${servlet-api.version}</version>
             </dependency>
             <!-- dubbox jar begin -->
-            <dependency>
+            <!--<dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
@@ -306,11 +306,31 @@
                         <artifactId>javax.servlet-api</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
+            </dependency>-->
             <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jboss.netty</groupId>
+                        <artifactId>netty</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--<dependency>
                 <groupId>cn.binux</groupId>
                 <artifactId>spring-boot-starter-dubbox</artifactId>
                 <version>${springboot.dubbox.version}</version>
+            </dependency>-->
+            <dependency>
+                <groupId>com.foreveross</groupId>
+                <artifactId>spring-boot-starter-dubbox</artifactId>
+                <version>2.3.8</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
@@ -476,11 +496,11 @@
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!--<dependency>-->
-                <!--<groupId>com.ctrip.framework.apollo</groupId>-->
-                <!--<artifactId>apollo-client</artifactId>-->
-                <!--<version>${apollo.version}</version>-->
-            <!--</dependency>-->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
